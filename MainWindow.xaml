@@ -1,0 +1,68 @@
+﻿<Window x:Class="Actividad9.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Actividad9"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="809" Width="1666">
+    <Grid HorizontalAlignment="Center" Width="1230" Height="624" VerticalAlignment="Top">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="245*"/>
+            <ColumnDefinition Width="254*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="155*"/>
+            <RowDefinition Height="7*"/>
+            <RowDefinition Height="272*"/>
+        </Grid.RowDefinitions>
+        <GroupBox Header="Agregar Nueva Tarea" Margin="-176,42,0,80" RenderTransformOrigin="0.5,0.5" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Width="316">
+            <Grid>
+                <Label Content="Nueva Tarea" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="NewTaskName" HorizontalAlignment="Left" Margin="104,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="164" Height="22"/>
+                <Label x:Name="TaskSize" Content="Tamaño (KB)" HorizontalAlignment="Left" Margin="10,52,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="NewTaskSize" HorizontalAlignment="Left" Margin="104,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="82" Height="22"/>
+                <Button x:Name="AddNewProcessButton" Content="Añadir" HorizontalAlignment="Left" Margin="228,55,0,0" VerticalAlignment="Top" IsCancel="True" Click="AddNewProcessButton_Click"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="GroupBox" Margin="-176,148,0,6" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="316" Grid.RowSpan="2">
+            <Grid>
+                <Label Content="Iniciar Simulación" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center"/>
+                <Button x:Name="StartSmiulationButton" Content="Iniciar Simulación" HorizontalAlignment="Left" Margin="127,0,0,0" VerticalAlignment="Center" Width="120" Click="StartSmiulationButton_Click"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Variables" Margin="170,42,0,298" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="424" Grid.RowSpan="3">
+            <Grid>
+                <Label Content="Time Quantum" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="26" Width="89"/>
+                <Label Content="Tamaño Mem P" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Width="104"/>
+                <Label Content="Tamaño Mem V" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" Width="104"/>
+                <TextBox x:Name="TimeQuantumValue" HorizontalAlignment="Left" Margin="128,14,0,0" TextWrapping="Wrap" Text="100" VerticalAlignment="Top" Width="120"/>
+                <TextBox x:Name="realMemorySizeValue" HorizontalAlignment="Left" Margin="128,45,0,0" TextWrapping="Wrap" Text="200" VerticalAlignment="Top" Width="120"/>
+                <TextBox x:Name="virtualMemorySizeValue" HorizontalAlignment="Left" Margin="128,76,0,0" TextWrapping="Wrap" Text="500" VerticalAlignment="Top" Width="120"/>
+                <Button x:Name="UpdateVariablesButton" Content="Actualizar" HorizontalAlignment="Left" Margin="211,103,0,0" VerticalAlignment="Top" Height="23" Width="83" Click="UpdateVariablesButton_Click"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Lista de Procesos" Margin="0,42,0,0" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="3" HorizontalAlignment="Center" Width="626" Height="284" VerticalAlignment="Top" Grid.Column="1">
+            <DataGrid x:Name="ProcessListToAddGrid" d:ItemsSource="{Binding processsListToAdd}" AutoGenerateColumns="True" IsReadOnly="True" AutoGeneratingColumn="MainProcessGridView_AutoGeneratingColumn"/>
+        </GroupBox>
+        <GroupBox Header="Gráfico procesos" Margin="170,123,0,-154" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="1060" Grid.Row="2" Grid.ColumnSpan="2">
+            <Grid Margin="2,0,-2,0">
+                <Canvas x:Name="MemoryCanvas" Background="White" Margin="0,0,192,0"/>
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Header="Memoria" Margin="-176,10,0,-154" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="316" Grid.Row="2">
+            <Grid>
+                <Label Content="Memoria Real" HorizontalAlignment="Left" Margin="10,456,0,0" VerticalAlignment="Top" Height="46" Width="110" FontSize="16"/>
+                <Label Content="Memoria Virtual" HorizontalAlignment="Left" Margin="168,456,0,0" VerticalAlignment="Top" Height="46" Width="126" FontSize="16"/>
+                <StackPanel Margin="0,0,184,58">
+                    <WrapPanel x:Name="RealMemoryPanel" Orientation="Horizontal" Height="454"/>
+                </StackPanel>
+                <StackPanel Margin="168,0,0,60">
+                    <WrapPanel x:Name="VirtualMemoryPanel" Orientation="Horizontal" Height="454"/>
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+
+    </Grid>
+</Window>
